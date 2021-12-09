@@ -39,16 +39,14 @@ struct unionFind{
     int forests;
 
     unionFind(int n) {
-        rank = vector<int>(n), parent = vector<int>(n);
+        rank.resize(n,0);
+        parent.resize(n);
         forests = n;        //Number of current forests
-        for (int i = 0; i < n; ++i) {
-            parent[i] = i;
-            rank[i] = 1;
-        }
+        for (int i = 0; i < n; ++i) parent[i] = i;
     }
     //find parent and make path compression in the same time
     int findSet(int x){
-        if(x == parent[x]) return x;
+        if(parent[x] == x) return x;
         return parent[x] = findSet(parent[x]);
     }
     void link(int x, int y) {
@@ -57,12 +55,12 @@ struct unionFind{
         if(rank[x] == rank[y]) rank[y]++;
     }
     bool unionSets(int x, int y) {
-        x = findSet(x), y = findSet(y);
-        if(x != y){
-            link(x, y);
+       int parentX = findSet(x), parentY = findSet(y);
+        if(parentX != parentY){
+            link(parentX,parentY);
             forests--;  //after merging two forests
         }
-        return x != y;
+        return parentX != parentY;
     }
     //Other utilities
     int same_set(int x, int y){
@@ -101,7 +99,7 @@ pair<int, vector<edge>> kruskalMST(vector<edge> edgeList, int n){  // O(E logV);
             edges.push_back(ed);
         }
     }
-    if(len(edges) != n - 1) return make_pair(-OO, vector<edge>());
+    if(len(edges) != n - 1) return make_pair(OO, vector<edge>());
     return make_pair(mstCost, edges);
 
 }
