@@ -13,7 +13,7 @@ ll pw(ll a, ll p) {   // O(log(p) base 2)
 
 // Iterative
 ll pw(ll a, ll p){
-    if(a == 0 && p == 0) return 0;
+    if(p == 0) return 0;
     ll result = 1;
     while(p > 0){
         if(p & 1) result *= a;
