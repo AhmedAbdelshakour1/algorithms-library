@@ -2,7 +2,6 @@
 
 // Recursive
 ll pw(ll a, ll p) {   // O(log(p) base 2)
-    if (p == 0 && a == 0) return 0;
     if (p == 0) return 1;
     ll sq = pw(a, p / 2);
     sq = sq * sq;
