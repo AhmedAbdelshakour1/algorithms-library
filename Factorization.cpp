@@ -14,7 +14,7 @@ vector<ll> factorization(ll n){ // O(sqrt(n) >> max n is 1e12
     //if n = 0 or n = 1?
     vector<ll> primes;
     ll i;
-    for(i = 2; i * i <= n; i += 1 + (i & 1){
+    for(i = 2; i * i <= n; i += 1 + (i & 1)){
         while(n % i == 0)
             primes.push_back(i), n /= i; // Get every prime inside n
     }
