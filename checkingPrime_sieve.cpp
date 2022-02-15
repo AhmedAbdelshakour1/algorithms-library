@@ -26,3 +26,9 @@ bool isPrime(ll n) {	// O(sqrt(n))
     }
     return true;
 }
+bool isPrime2(ll n) {	// O(sqrt(n))
+    for(ll i=2; i*i <= n; i += 1 + (i & 1)){
+    	if(n%i == 0) return false;
+    }
+    return true;
+}
