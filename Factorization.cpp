@@ -1,3 +1,4 @@
+const int N = 1e6;
 vector<ll> generate_divisors(ll n){ // O(sqrt(n)
     vector<ll> v;
     ll i;
@@ -22,7 +23,31 @@ vector<ll> factorization(ll n){ // O(sqrt(n) >> max n is 1e12
         primes.push_back(n);
     return primes;
 }
-
+//----------------------------------------------------------------------------------//
+int comp[N];
+//comp[i] = smallest prime factor(comp[12] = 2) and if i prime >> comp[i] = i
+void modified_sieve(){
+    iota(comp, comp + N, 0);
+    comp[0] = comp[1] = -1;
+    for (ll i = 2; i * i <= N; ++i) {
+        if(comp[i] == i) {
+            for (ll j = i * i; j <= N; j += i) {
+                if(comp[j] == j)
+                    comp[j] = i;
+            }
+        }
+    }
+}
+//O(log)
+vector<int> factorize_log(int n){
+    vector<int> ans;
+    while(n > 1){
+        ans.push_back(comp[n]);
+        n /= comp[n];
+    }
+    return ans;
+}
+//----------------------------------------------------------------------------------//
 //return sum of divisors of i in range n
 int sum_of_divisors1(int n){ // forward thinking
     int s = 0;
