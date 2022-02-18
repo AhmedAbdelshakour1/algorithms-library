@@ -1,3 +1,12 @@
+// __builtin_clz // Returns the number of leading 0-bits in x. eg 8 = 00000000000000000000000000001000 --> 28
+// __builtin_ctz // Returns the number of trailing 0-bits in x. eg 8 = 1000 --> 3
+// __builtin_popcount // Returns the number of 1-bits in x.  
+
+//for long long
+// __builtin_clzll
+// __builtin_ctzll 
+// __builtin_popcountll 
+//.....................................................................................//
 void printNumber(int n, int len) {
     if (!len)
         return;
@@ -5,6 +14,7 @@ void printNumber(int n, int len) {
     printNumber(n >> 1, len - 1);    // remove last bit
     cout << (n & 1);                        // print last bit
 }
+//.....................................................................................//
 bool isOne(int n, int indx) { return (n & (1 << indx) ) != 0; } // check if index bit is 1 - (0-indexed)
 
 int flipRightMostToOne(int n) { return n | (n + 1); } // flip right-most 0 to 1 , Eg 10011 to 10111
@@ -28,7 +38,7 @@ int setBit1(int num, int idx) { return num | (1 << idx); } //set bit 1 in idx fr
 int setBit0(int num, int idx) { return num & ~(1 << idx); } //set bit 0 in idx from right
 
 int flipBit(int num, int idx) {return num ^ (1 << idx); } 
-    
+//.....................................................................................//
 // Let's first assume, mask was complete and we work on it reverse
 void PrintAllSubsetsAllOnes(int len) {
     int mask = (1 << len) - 1;
@@ -46,7 +56,7 @@ void getAllSubMasks(int mask) {
     }
     // For reverse: ~subMask&mask = subMask^mask
 }
-
+//.....................................................................................//
 void STL() {
     const int N = 20;        // const
     string s = "000111";
