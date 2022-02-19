@@ -7,6 +7,15 @@
 // __builtin_ctzll 
 // __builtin_popcountll 
 //.....................................................................................//
+//find all bits that are on in some number x. eg 1011 -> 0 1 3
+for (int i = 0; i < 30; ++i) {
+      if((x & (1 << i))) printf("%d ", i);
+}
+//print binary representation to number x. if x if long long change (1 << i) to (1LL << i)
+for (int i = 30; ~i ; --i) {
+      if((x & (1 << i))) printf("%d", 1);
+       else printf("%d" , 0);
+}
 void printNumber(int n, int len) {
     if (!len)
         return;
