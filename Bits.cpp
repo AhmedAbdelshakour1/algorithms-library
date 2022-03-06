@@ -7,6 +7,10 @@
 // __builtin_ctzll 
 // __builtin_popcountll 
 //.....................................................................................//
+//from binary to decimal. takecare about long long  -> (stoll(s, 0, 2))
+string s; cin >> s;
+    cout << stoi(s, 0, 2);
+//.....................................................................................//
 //find all bits that are on in some number x. eg 1011 -> 0 1 3
 for (int i = 0; i < 30; ++i) {
       if((x & (1 << i))) printf("%d ", i);
