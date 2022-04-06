@@ -13,6 +13,10 @@ string s; cin >> s;
 //.....................................................................................//
 //from decimal to binary
  cout << bitset<8>{7} << nline; //00000111
+//or
+int n = 7;
+    bitset<8> b(n);
+    cout << b.to_string() << nline;
 //.....................................................................................//
 //find all bits that are on in some number x. eg 1011 -> 0 1 3
 for (int i = 0; i < 30; ++i) {
