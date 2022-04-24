@@ -34,7 +34,7 @@ int LIS3(int indx, int prev) { //O(n^2)
     int &ret = memo[indx][prev];
     if(~ret) return ret;
     ret = LIS(indx + 1, prev);
-    if(prev == n || v[indx] > v[prev])
+    if(v[indx] > v[prev])
         return ret = max(ret, LIS(indx + 1, indx) + 1);
     return ret;
 }
