@@ -27,15 +27,16 @@ int LIS2() { // dp in O(n^2)
     return ans;
 }
 // memoization
+//LIS(0, n);
 int memo[2555][2555];
 int LIS3(int indx, int prev) { //O(n^2)
     if(indx == n)
         return 0;
     int &ret = memo[indx][prev];
     if(~ret) return ret;
-    ret = LIS(indx + 1, prev);
+    ret = LIS3(indx + 1, prev);
     if(v[indx] > v[prev])
-        return ret = max(ret, LIS(indx + 1, indx) + 1);
+        return ret = max(ret, LIS3(indx + 1, indx) + 1);
     return ret;
 }
 int main() {
