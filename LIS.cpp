@@ -41,11 +41,10 @@ int LIS3(int indx, int prev) { //O(n^2)
 }
 int main() {
     //cin >> n;
-    //v.resize(n);
+    //v.resize(n + 1);
     // MOD = 1e9 + 7 u can use another big number instead.
     //dp.resize(n + 10, MOD);
     //memset(memo, -1, sizeof memo);
-    //for(int &i : v) cin >> i;
     //cout << LIS();
 
 }
