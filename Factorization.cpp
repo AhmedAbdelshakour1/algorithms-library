@@ -24,6 +24,33 @@ vector<ll> factorization(ll n){ // O(sqrt(n) >> max n is 1e12
     return primes;
 }
 //----------------------------------------------------------------------------------//
+// Prime Factorization using Sieve O(log n) for multiple queries
+
+const int MAXN = 100001;
+int lPrime[MAXN];
+
+void leastPrimeFactor(){ // max n is 1e7
+    lPrime[1] = 1;
+    for (ll i = 2; i <= MAXN; i++){
+        if (!lPrime[i]){
+            lPrime[i] = i;
+            for (ll j = i*i; j <= MAXN; j += i) {
+                if (!lPrime[j])
+                    lPrime[j] = i;
+            }
+        }
+    }
+}
+
+vector<int> getFactorization(int x){ // O(long n)
+    vector<int> ret;
+    while (x != 1){
+        ret.push_back(lPrime[x]);
+        x = x / lPrime[x];
+    }
+    return ret;
+}
+//----------------------------------------------------------------------------------//
 int comp[N];
 //comp[i] = smallest prime factor(comp[12] = 2) and if i prime >> comp[i] = i
 void modified_sieve(){
