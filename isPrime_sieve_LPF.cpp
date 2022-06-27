@@ -16,6 +16,24 @@ void sieve(){ // O(nloglogn)
             primes.push_back(i);
 }
 
+//smallest prime factor
+void leastPrimeFactor(int n){
+    vector<int> lPrime(n+1, 0);
+    lPrime[1] = 1;
+
+    for (int i = 2; i <= n; i++){
+        if (!lPrime[i]){
+            // marking the prime number as its own lpf
+            lPrime[i] = i;
+            for (int j = i*i; j <= n; j += i)
+                if (!lPrime[j])
+                    lPrime[j] = i;
+        }
+    }
+
+    for (int i = 1; i <= n; i++)
+        cout << i << ": " << lPrime[i] << "\n";
+}
 
 bool isPrime(ll n) {	// O(sqrt(n))
     if(n == 2) return true;
