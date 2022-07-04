@@ -9,7 +9,17 @@ typedef long long ll;
 // ax + by = gcd(a, b)
 // ax + by + cz = gcd(a, b, c)
 //gcd(a, b, c) = gcd(gcd(a, b), c)
-ll extended_euclid(ll a,ll b,ll &x, ll&y) {
+ll extended_euclid(ll a, ll b, ll &x, ll &y) {
+    if (a < 0) {
+        ll r = extended_euclid(-a, b, x, y);
+        x *= -1;
+        return r;
+    }
+    if (b < 0) {
+        ll r = extended_euclid(a, -b, x, y);
+        y *= -1;
+        return r;
+    }
     if (b == 0) {
         x = 1, y = 0;
         return a;
