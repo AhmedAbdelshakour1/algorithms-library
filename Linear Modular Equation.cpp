@@ -18,12 +18,6 @@ ll extended_euclid(ll a, ll b, ll &x, ll &y) {
     return g;
 }
 
-ll linearDiophantine(ll a, ll b, ll c, ll &x, ll &y, bool &found) {
-    ll g = extended_euclid(a, b, x, y);
-    if (found = c % g == 0)
-        x *= c / g, y *= c / g;
-    return g;
-}
 
 // solves the equation ax = b (mod n)
 vector<ll> modularEquation(ll a, ll b, ll n) {
