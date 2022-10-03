@@ -1,4 +1,5 @@
 // https://github.com/AhmedAbdelshakour1/competitive-programming/blob/main/SPOJ/Prime%20Generator.cpp
+// O((R-L+1)loglog(R) + sqrt(R)loglog(sqrt(R)))
 
 vector<char> segmentedSieve(int L, int R){
     int sq = sqrt(R);
